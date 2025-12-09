@@ -1,0 +1,91 @@
+openapi: 3.0.4
+info:
+  title: CAA Record Parser
+  description: CAA Record Parser analyzes DNS CAA records that specify which Certificate Authorities are authorized to issue certificates for a domain.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.9
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+- url: https://api.apiverve.com/
+paths:
+  /v1/caaparser:
+    post:
+      summary: Parse CAA Record
+      description: CAA Record Parser analyzes DNS CAA records that specify which Certificate Authorities are authorized to issue certificates for a domain.
+      operationId: caaparser
+      parameters: []
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: string
+                    description: data
+              example:
+                status: ok
+                error: 
+                data:
+                  raw_record: example.com. 3600 IN CAA 0 issue "letsencrypt.org"
+                  parsed:
+                    domain: example.com
+                    ttl: 3600
+                    class: IN
+                    flags: 0
+                    tag: issue
+                    value: letsencrypt.org
+                  ca_info:
+                    name: Let's Encrypt
+                    type: Free
+                    wildcard_support: true
+                  interpretation:
+                    meaning: Only letsencrypt.org is authorized to issue certificates
+                    restriction: Restricted to specific CA
+                    critical: false
+                    critical_explanation: Non-critical - CA may proceed if not understood
+                  tag_description: Authorizes a CA to issue certificates (any type)
+                  is_valid: true
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occured, try again later
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                record:
+                  type: string
+                  description: The CAA record string to parse
+                  example: example.com. 3600 IN CAA 0 issue "letsencrypt.org"
+              required:
+              - record
+              example:
+                record: example.com. 3600 IN CAA 0 issue "letsencrypt.org"
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+- api_key: []
