@@ -12,7 +12,6 @@ namespace APIVerve.API.CAARecordParser
     {
         /// <summary>
         /// The CAA record string to parse
-        /// Example: example.com. 3600 IN CAA 0 issue "letsencrypt.org"
         /// </summary>
         [JsonProperty("record")]
         public string Record { get; set; }
