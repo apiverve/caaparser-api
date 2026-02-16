@@ -237,8 +237,9 @@ from apiverve_caarecordparser.apiClient import CaaparserAPIClient
 
 api = CaaparserAPIClient("[YOUR_API_KEY]")
 
+query = { "record": "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\"" }
+
 try:
-    query = { "record": "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\"" }
     result = api.execute(query)
     print(result)
 finally:
