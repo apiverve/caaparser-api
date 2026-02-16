@@ -51,7 +51,7 @@ func main() {
 
     // Set up parameters
     params := map[string]interface{}{
-        "record": "example.com. 3600 IN CAA 0 issue "letsencrypt.org""
+        "record": "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
     }
 
     // Make the request
