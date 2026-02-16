@@ -1,4 +1,4 @@
-## 1.1.13
+## 1.1.14
 
 - Initial release
 - Full API support for CAA Record Parser API
