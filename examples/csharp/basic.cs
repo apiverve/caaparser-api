@@ -20,7 +20,7 @@ namespace APIVerve.Examples
         private static readonly string API_URL = "https://api.apiverve.com/v1/caaparser";
 
         /// <summary>
-        /// Make a GET request to the CAA Record Parser API
+        /// Make a POST request to the CAA Record Parser API
         /// </summary>
         static async Task<JsonDocument> CallCAARecordParserAPI()
         {
@@ -29,7 +29,13 @@ namespace APIVerve.Examples
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("x-api-key", API_KEY);
 
-                var response = await client.GetAsync(API_URL);
+                // Request body
+                var requestBody &#x3D; new { record &#x3D; &quot;example.com. 3600 IN CAA 0 issue &quot;letsencrypt.org&quot;&quot; };
+
+                var jsonContent = JsonSerializer.Serialize(requestBody);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(API_URL, content);
 
                 // Check if response is successful
                 response.EnsureSuccessStatusCode();
