@@ -12,8 +12,12 @@ public class BasicExample {
         CAARecordParserAPIClient client = new CAARecordParserAPIClient("YOUR_API_KEY_HERE");
 
         try {
-            // Execute the API request (no parameters required)
-            APIResponse response = client.execute(null);
+            // Request body
+            Map&lt;String, Object&gt; parameters &#x3D; new HashMap&lt;&gt;();
+        parameters.put(&quot;record&quot;, &quot;example.com. 3600 IN CAA 0 issue &quot;letsencrypt.org&quot;&quot;);
+
+            // Execute the API request
+            APIResponse response = client.execute(parameters);
 
             // Check if the request was successful
             if (response.isSuccess()) {
