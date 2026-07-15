@@ -4,43 +4,55 @@ declare module '@apiverve/caaparser' {
     secure?: boolean;
   }
 
+  /**
+   * Describes fields the current plan does not unlock. Locked fields arrive as null
+   * in `data`; `locked_fields` names them, using dot paths for nested fields.
+   * Absent when the plan unlocks everything.
+   */
+  export interface PremiumInfo {
+    message: string;
+    upgrade_url: string;
+    locked_fields: string[];
+  }
+
   export interface caaparserResponse {
     status: string;
     error: string | null;
     data: CAARecordParserData;
     code?: number;
+    premium?: PremiumInfo;
   }
 
 
   interface CAARecordParserData {
-      rawRecord:      string;
+      rawRecord:      null | string;
       parsed:         Parsed;
       caInfo:         CAInfo;
       interpretation: Interpretation;
-      tagDescription: string;
-      isValid:        boolean;
+      tagDescription: null | string;
+      isValid:        boolean | null;
   }
   
   interface CAInfo {
-      name:            string;
-      type:            string;
-      wildcardSupport: boolean;
+      name:            null | string;
+      type:            null | string;
+      wildcardSupport: boolean | null;
   }
   
   interface Interpretation {
-      meaning:             string;
-      restriction:         string;
-      critical:            boolean;
-      criticalExplanation: string;
+      meaning:             null | string;
+      restriction:         null | string;
+      critical:            boolean | null;
+      criticalExplanation: null | string;
   }
   
   interface Parsed {
-      domain: string;
-      ttl:    number;
-      class:  string;
-      flags:  number;
-      tag:    string;
-      value:  string;
+      domain: null | string;
+      ttl:    number | null;
+      class:  null | string;
+      flags:  number | null;
+      tag:    null | string;
+      value:  null | string;
   }
 
   export default class caaparserWrapper {
