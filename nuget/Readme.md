@@ -51,7 +51,7 @@ Here's a simple example to get you started quickly:
 
 ```csharp
 using System;
-using APIVerve;
+using APIVerve.API.CAARecordParser;
 
 class Program
 {
@@ -60,7 +60,7 @@ class Program
         // Initialize the API client
         var apiClient = new CAARecordParserAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
+        var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -116,7 +116,7 @@ The modern async/await pattern provides the best performance and code readabilit
 ```csharp
 using System;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.CAARecordParser;
 
 public class Example
 {
@@ -124,7 +124,7 @@ public class Example
     {
         var apiClient = new CAARecordParserAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
+        var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -148,7 +148,7 @@ If you need to use synchronous code, you can use the `Execute` method:
 
 ```csharp
 using System;
-using APIVerve;
+using APIVerve.API.CAARecordParser;
 
 public class Example
 {
@@ -156,7 +156,7 @@ public class Example
     {
         var apiClient = new CAARecordParserAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
+        var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -185,7 +185,7 @@ The API client provides comprehensive error handling. Here are some examples:
 ```csharp
 using System;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.CAARecordParser;
 
 public class Example
 {
@@ -193,7 +193,7 @@ public class Example
     {
         var apiClient = new CAARecordParserAPIClient("[YOUR_API_KEY]");
 
-        var queryOptions = new QueryOptions {
+        var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -237,7 +237,7 @@ public class Example
 ```csharp
 using System;
 using System.Threading.Tasks;
-using APIVerve;
+using APIVerve.API.CAARecordParser;
 
 public class Example
 {
@@ -249,7 +249,7 @@ public class Example
         apiClient.SetMaxRetries(3);        // Retry up to 3 times (default: 0, max: 3)
         apiClient.SetRetryDelay(2000);     // Wait 2 seconds between retries
 
-        var queryOptions = new QueryOptions {
+        var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -290,7 +290,7 @@ var apiClient = new CAARecordParserAPIClient("[YOUR_API_KEY]");
 apiClient.AddCustomHeader("X-Custom-Header", "custom-value");
 apiClient.AddCustomHeader("X-Request-ID", Guid.NewGuid().ToString());
 
-var queryOptions = new QueryOptions {
+var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -316,7 +316,7 @@ apiClient.SetLogger(message =>
     Console.WriteLine($"[LOG] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}");
 });
 
-var queryOptions = new QueryOptions {
+var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -334,7 +334,7 @@ var apiClient = new CAARecordParserAPIClient("[YOUR_API_KEY]");
 apiClient.SetMaxRetries(3);           // Retry up to 3 times (default: 0, max: 3)
 apiClient.SetRetryDelay(1500);        // Wait 1.5 seconds between retries (default: 1000ms)
 
-var queryOptions = new QueryOptions {
+var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
@@ -346,7 +346,7 @@ var response = await apiClient.ExecuteAsync(queryOptions);
 The API client implements `IDisposable` for proper resource cleanup:
 
 ```csharp
-var queryOptions = new QueryOptions {
+var queryOptions = new CAARecordParserQueryOptions {
     record = "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\""
 };
 
