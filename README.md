@@ -197,11 +197,49 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the CAA Record Parser API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "raw_record": "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\"",
+    "parsed": {
+      "domain": "example.com",
+      "ttl": 3600,
+      "class": "IN",
+      "flags": 0,
+      "tag": "issue",
+      "value": "letsencrypt.org"
+    },
+    "ca_info": {
+      "name": "Let's Encrypt",
+      "type": "Free",
+      "wildcard_support": true
+    },
+    "interpretation": {
+      "meaning": "Only letsencrypt.org is authorized to issue certificates",
+      "restriction": "Restricted to specific CA",
+      "critical": false,
+      "critical_explanation": "Non-critical - CA may proceed if not understood"
+    },
+    "tag_description": "Authorizes a CA to issue certificates (any type)",
+    "is_valid": true
+  }
 }
 ```
 
