@@ -25,6 +25,9 @@ namespace APIVerve.API.CAARecordParser
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
@@ -45,7 +48,7 @@ namespace APIVerve.API.CAARecordParser
         public string TagDescription { get; set; }
 
         [JsonProperty("is_valid")]
-        public bool IsValid { get; set; }
+        public bool? IsValid { get; set; }
     }
 
     public partial class CaInfo
@@ -57,7 +60,7 @@ namespace APIVerve.API.CAARecordParser
         public string Type { get; set; }
 
         [JsonProperty("wildcard_support")]
-        public bool WildcardSupport { get; set; }
+        public bool? WildcardSupport { get; set; }
     }
 
     public partial class Interpretation
@@ -69,7 +72,7 @@ namespace APIVerve.API.CAARecordParser
         public string Restriction { get; set; }
 
         [JsonProperty("critical")]
-        public bool Critical { get; set; }
+        public bool? Critical { get; set; }
 
         [JsonProperty("critical_explanation")]
         public string CriticalExplanation { get; set; }
@@ -81,18 +84,30 @@ namespace APIVerve.API.CAARecordParser
         public string Domain { get; set; }
 
         [JsonProperty("ttl")]
-        public long Ttl { get; set; }
+        public long? Ttl { get; set; }
 
         [JsonProperty("class")]
         public string Class { get; set; }
 
         [JsonProperty("flags")]
-        public long Flags { get; set; }
+        public long? Flags { get; set; }
 
         [JsonProperty("tag")]
         public string Tag { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
