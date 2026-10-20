@@ -18,7 +18,7 @@ servers:
 paths:
   /v1/caaparser:
     post:
-      summary: Parse CAA Record
+      summary: CAA Record Parser
       description: Parse a DNS CAA record and extract authorization details
       operationId: caaparser
       parameters: []
