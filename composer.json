@@ -1,7 +1,7 @@
 {
     "name": "apiverve/caaparser",
     "description": "CAA Record Parser analyzes DNS CAA records that specify which Certificate Authorities are authorized to issue certificates for a domain.",
-    "version": "1.2.0",
+    "version": "1.2.2",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -21,7 +21,7 @@
         "caa parser",
         "dns parser"
     ],
-    "homepage": "https://apiverve.com/marketplace/caaparser?utm_source=php&utm_medium=homepage",
+    "homepage": "https://apiverve.com/marketplace/caaparser?utm_source=php&utm_medium=referral&utm_content=homepage",
     "support": {
         "email": "hello@apiverve.com",
         "docs": "https://docs.apiverve.com/ref/caaparser",
