@@ -1,0 +1,113 @@
+# CAA Record Parser API - Ruby Gem
+
+CAA Record Parser analyzes DNS CAA records that specify which Certificate Authorities are authorized to issue certificates for a domain.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'apiverve_caaparser'
+```
+
+And then execute:
+
+```bash
+$ bundle install
+```
+
+Or install it yourself as:
+
+```bash
+$ gem install apiverve_caaparser
+```
+
+## Getting Started
+
+Get your API key at [APIVerve](https://apiverve.com)
+
+### Basic Usage
+
+```ruby
+require 'apiverve_caaparser'
+
+# Initialize the client
+client = APIVerve::Caaparser::Client.new(api_key: "YOUR_API_KEY")
+
+# Make a request
+response = client.execute({ record: "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\"" })
+
+# Print the response
+puts response
+```
+
+
+### Error Handling
+
+```ruby
+begin
+  response = client.execute({ record: "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\"" })
+  puts response["data"]
+rescue APIVerve::Caaparser::ValidationError => e
+  puts "Validation error: #{e.errors.join(', ')}"
+rescue APIVerve::Caaparser::APIError => e
+  puts "API error: #{e.message}"
+  puts "Status code: #{e.status_code}"
+end
+```
+
+### Debug Mode
+
+```ruby
+# Enable debug logging
+client = APIVerve::Caaparser::Client.new(
+  api_key: "YOUR_API_KEY",
+  debug: true
+)
+```
+
+## Example Response
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "raw_record": "example.com. 3600 IN CAA 0 issue \"letsencrypt.org\"",
+    "parsed": {
+      "domain": "example.com",
+      "ttl": 3600,
+      "class": "IN",
+      "flags": 0,
+      "tag": "issue",
+      "value": "letsencrypt.org"
+    },
+    "ca_info": {
+      "name": "Let's Encrypt",
+      "type": "Free",
+      "wildcard_support": true
+    },
+    "interpretation": {
+      "meaning": "Only letsencrypt.org is authorized to issue certificates",
+      "restriction": "Restricted to specific CA",
+      "critical": false,
+      "critical_explanation": "Non-critical - CA may proceed if not understood"
+    },
+    "tag_description": "Authorizes a CA to issue certificates (any type)",
+    "is_valid": true
+  }
+}
+```
+
+## Documentation
+
+For more information, visit the [API Documentation](https://docs.apiverve.com/ref/caaparser?utm_source=rubygems&utm_medium=referral&utm_content=readme).
+
+## Support
+
+- Website: [https://apiverve.com/marketplace/caaparser?utm_source=ruby&utm_medium=referral&utm_content=readme](https://apiverve.com/marketplace/caaparser?utm_source=ruby&utm_medium=referral&utm_content=readme)
+- Email: hello@apiverve.com
+
+## License
+
+This gem is available under the [MIT License](LICENSE).
