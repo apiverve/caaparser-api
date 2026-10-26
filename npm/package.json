@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/caaparser",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "CAA Record Parser analyzes DNS CAA records that specify which Certificate Authorities are authorized to issue certificates for a domain.",
   "main": "index.js",
   "types": "index.d.ts",
