@@ -46,7 +46,7 @@ final _formatPatterns = {
 
 /// CAA Record Parser API client.
 ///
-/// For more information, visit: https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=readme
+/// For more information, visit: https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=referral&utm_content=readme
 ///
 /// Parameters:
 /// * [record] (required) - The CAA record string to parse

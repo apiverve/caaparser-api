@@ -5,7 +5,7 @@ CAA Record Parser analyzes DNS CAA records that specify which Certificate Author
 [![pub package](https://img.shields.io/pub/v/apiverve_caaparser.svg)](https://pub.dev/packages/apiverve_caaparser)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is the Dart/Flutter client for the [CAA Record Parser API](https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=readme).
+This is the Dart/Flutter client for the [CAA Record Parser API](https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=referral&utm_content=readme).
 
 ## Installation
 
@@ -13,7 +13,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  apiverve_caaparser: ^1.1.14
+  apiverve_caaparser: ^1.2.3
 ```
 
 Then run:
@@ -80,12 +80,12 @@ void main() async {
 
 ## API Reference
 
-- **API Home:** [CAA Record Parser API](https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=readme)
-- **Documentation:** [docs.apiverve.com/ref/caaparser](https://docs.apiverve.com/ref/caaparser?utm_source=dart&utm_medium=readme)
+- **API Home:** [CAA Record Parser API](https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=referral&utm_content=readme)
+- **Documentation:** [docs.apiverve.com/ref/caaparser](https://docs.apiverve.com/ref/caaparser?utm_source=dart&utm_medium=referral&utm_content=readme)
 
 ## Authentication
 
-All requests require an API key. Get yours at [apiverve.com](https://apiverve.com?utm_source=dart&utm_medium=readme).
+All requests require an API key. Get yours at [apiverve.com](https://apiverve.com?utm_source=dart&utm_medium=referral&utm_content=readme).
 
 ## License
 
@@ -93,4 +93,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-Built with Dart for [APIVerve](https://apiverve.com?utm_source=dart&utm_medium=readme)
+Built with Dart for [APIVerve](https://apiverve.com?utm_source=dart&utm_medium=referral&utm_content=readme)

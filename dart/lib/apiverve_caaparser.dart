@@ -2,7 +2,7 @@
 ///
 /// CAA Record Parser analyzes DNS CAA records that specify which Certificate Authorities are authorized to issue certificates for a domain.
 ///
-/// For more information, visit: https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=readme
+/// For more information, visit: https://apiverve.com/marketplace/caaparser?utm_source=dart&utm_medium=referral&utm_content=readme
 library apiverve_caaparser;
 
 export 'src/client.dart';
